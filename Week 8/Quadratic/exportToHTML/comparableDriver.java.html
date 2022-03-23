@@ -1,0 +1,59 @@
+<html>
+<head>
+<title>comparableDriver.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #808080;}
+.s3 { color: #6897bb;}
+.s4 { color: #6a8759;}
+.ln { color: #606366; font-weight: normal; font-style: normal; }
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+comparableDriver.java</font>
+</center></td></tr></table>
+<pre><a name="l1"><span class="ln">1    </span></a><span class="s0">import </span><span class="s1">org.apache.commons.math3.complex.Complex</span><span class="s0">;</span>
+<a name="l2"><span class="ln">2    </span></a><span class="s0">import </span><span class="s1">org.apache.commons.math3.complex.ComplexFormat</span><span class="s0">;</span>
+<a name="l3"><span class="ln">3    </span></a><span class="s0">import </span><span class="s1">java.text.NumberFormat</span><span class="s0">;</span>
+<a name="l4"><span class="ln">4    </span></a><span class="s0">import </span><span class="s1">java.util.ArrayList</span><span class="s0">;</span>
+<a name="l5"><span class="ln">5    </span></a><span class="s0">import </span><span class="s1">java.util.Collections</span><span class="s0">;</span>
+<a name="l6"><span class="ln">6    </span></a><span class="s0">import </span><span class="s1">java.util.List</span><span class="s0">;</span>
+<a name="l7"><span class="ln">7    </span></a><span class="s0">import </span><span class="s1">java.util.Random</span><span class="s0">;</span>
+<a name="l8"><span class="ln">8    </span></a>
+<a name="l9"><span class="ln">9    </span></a><span class="s0">public class </span><span class="s1">comparableDriver {</span>
+<a name="l10"><span class="ln">10   </span></a>    <span class="s0">public static void </span><span class="s1">main(String[] args) {</span>
+<a name="l11"><span class="ln">11   </span></a>        <span class="s1">Random rand = </span><span class="s0">new </span><span class="s1">Random()</span><span class="s0">; </span><span class="s2">// generate random number</span>
+<a name="l12"><span class="ln">12   </span></a>        <span class="s1">Quadratic quad1 = </span><span class="s0">new </span><span class="s1">Quadratic(rand.nextInt(</span><span class="s3">100</span><span class="s1">)-</span><span class="s3">50</span><span class="s0">,</span><span class="s1">rand.nextInt(</span><span class="s3">100</span><span class="s1">)-</span><span class="s3">50</span><span class="s0">,</span><span class="s1">rand.nextInt(</span><span class="s3">100</span><span class="s1">)-</span><span class="s3">50</span><span class="s1">)</span><span class="s0">; </span><span class="s2">// create quadratic 1</span>
+<a name="l13"><span class="ln">13   </span></a>        <span class="s1">Quadratic quad2 = </span><span class="s0">new </span><span class="s1">Quadratic(rand.nextInt(</span><span class="s3">100</span><span class="s1">)-</span><span class="s3">50</span><span class="s0">, </span><span class="s1">rand.nextInt(</span><span class="s3">100</span><span class="s1">)-</span><span class="s3">50</span><span class="s0">, </span><span class="s1">rand.nextInt(</span><span class="s3">100</span><span class="s1">)-</span><span class="s3">50</span><span class="s1">)</span><span class="s0">; </span><span class="s2">// create quadratic 2</span>
+<a name="l14"><span class="ln">14   </span></a>        <span class="s1">Quadratic quad3 = </span><span class="s0">new </span><span class="s1">Quadratic(rand.nextInt(</span><span class="s3">100</span><span class="s1">)-</span><span class="s3">50</span><span class="s0">, </span><span class="s1">rand.nextInt(</span><span class="s3">100</span><span class="s1">)-</span><span class="s3">50</span><span class="s0">, </span><span class="s1">rand.nextInt(</span><span class="s3">100</span><span class="s1">)-</span><span class="s3">50</span><span class="s1">)</span><span class="s0">; </span><span class="s2">// create quadratic 3</span>
+<a name="l15"><span class="ln">15   </span></a>        <span class="s1">quad1.solution()</span><span class="s0">; </span><span class="s2">// get solution of quadratic 1</span>
+<a name="l16"><span class="ln">16   </span></a>        <span class="s1">quad2.solution()</span><span class="s0">; </span><span class="s2">// get solution of quadratic 2</span>
+<a name="l17"><span class="ln">17   </span></a>        <span class="s1">quad3.solution()</span><span class="s0">; </span><span class="s2">// get solution of quadratic 3</span>
+<a name="l18"><span class="ln">18   </span></a>
+<a name="l19"><span class="ln">19   </span></a>        <span class="s1">System.out.println(</span><span class="s4">&quot;quad1 (&quot; </span><span class="s1">+ quad1.equation()[</span><span class="s3">1</span><span class="s1">] + </span><span class="s4">&quot;) equals quad2 (&quot; </span><span class="s1">+ quad2.equation()[</span><span class="s3">1</span><span class="s1">] + </span><span class="s4">&quot;): &quot; </span><span class="s1">+ quad1.compareTo(quad2))</span><span class="s0">; </span><span class="s2">// compare quad1 to quad2</span>
+<a name="l20"><span class="ln">20   </span></a>        <span class="s1">System.out.println(</span><span class="s4">&quot;quad2 (&quot; </span><span class="s1">+ quad2.equation()[</span><span class="s3">1</span><span class="s1">] + </span><span class="s4">&quot;) equals quad3 (&quot; </span><span class="s1">+ quad3.equation()[</span><span class="s3">1</span><span class="s1">] + </span><span class="s4">&quot;): &quot; </span><span class="s1">+ quad2.compareTo(quad3))</span><span class="s0">; </span><span class="s2">// compare quad2 to quad3</span>
+<a name="l21"><span class="ln">21   </span></a>        <span class="s1">System.out.println(</span><span class="s4">&quot;quad3 (&quot; </span><span class="s1">+ quad3.equation()[</span><span class="s3">1</span><span class="s1">] + </span><span class="s4">&quot;) equals quad1 (&quot; </span><span class="s1">+ quad1.equation()[</span><span class="s3">1</span><span class="s1">] + </span><span class="s4">&quot;): &quot; </span><span class="s1">+ quad3.compareTo(quad1) + </span><span class="s4">&quot;</span><span class="s0">\n</span><span class="s4">&quot;</span><span class="s1">)</span><span class="s0">; </span><span class="s2">// compare quad3 to quad1</span>
+<a name="l22"><span class="ln">22   </span></a>
+<a name="l23"><span class="ln">23   </span></a>        <span class="s1">List&lt;Quadratic&gt; quadList = </span><span class="s0">new </span><span class="s1">ArrayList&lt;&gt;()</span><span class="s0">; </span><span class="s2">// create new quadratic list</span>
+<a name="l24"><span class="ln">24   </span></a>        <span class="s1">quadList.add(quad1)</span><span class="s0">; </span><span class="s2">// add quadratic 1 to quadratic list</span>
+<a name="l25"><span class="ln">25   </span></a>        <span class="s1">quadList.add(quad2)</span><span class="s0">; </span><span class="s2">// add quadratic 2 to quadratic list</span>
+<a name="l26"><span class="ln">26   </span></a>        <span class="s1">quadList.add(quad3)</span><span class="s0">; </span><span class="s2">// add quadratic 3 to quadratic list</span>
+<a name="l27"><span class="ln">27   </span></a>
+<a name="l28"><span class="ln">28   </span></a>        <span class="s1">Collections.sort(quadList)</span><span class="s0">; </span><span class="s2">// sort list by distance between roots using Collections class and compareTo method</span>
+<a name="l29"><span class="ln">29   </span></a>        <span class="s0">for </span><span class="s1">(Quadratic quad : quadList) { </span><span class="s2">// for each quadratic in quadratic list</span>
+<a name="l30"><span class="ln">30   </span></a>            <span class="s1">Complex[] sol = quad.solution()</span><span class="s0">; </span><span class="s2">// get solution in complex format</span>
+<a name="l31"><span class="ln">31   </span></a>            <span class="s1">NumberFormat nf = NumberFormat.getInstance()</span><span class="s0">;  </span><span class="s2">// create new number format</span>
+<a name="l32"><span class="ln">32   </span></a>            <span class="s1">ComplexFormat cf = </span><span class="s0">new </span><span class="s1">ComplexFormat(nf)</span><span class="s0">; </span><span class="s2">// create new complex format from number format</span>
+<a name="l33"><span class="ln">33   </span></a>            <span class="s1">System.out.println(quad.equation()[</span><span class="s3">1</span><span class="s1">] + </span><span class="s4">&quot;</span><span class="s0">\n</span><span class="s4">&quot; </span><span class="s1">+ </span><span class="s2">// print out equation</span>
+<a name="l34"><span class="ln">34   </span></a>                    <span class="s4">&quot;roots: x₁ = &quot; </span><span class="s1">+ cf.format(sol[</span><span class="s3">0</span><span class="s1">]) + </span><span class="s4">&quot;, x₂ = &quot; </span><span class="s1">+ cf.format(sol[</span><span class="s3">1</span><span class="s1">]) + </span><span class="s4">&quot;</span><span class="s0">\n</span><span class="s4">&quot; </span><span class="s1">+ </span><span class="s2">// print roots</span>
+<a name="l35"><span class="ln">35   </span></a>                    <span class="s4">&quot;distance between roots: &quot; </span><span class="s1">+ cf.format(quad.getDist()) +</span><span class="s4">&quot;</span><span class="s0">\n</span><span class="s4">&quot;</span><span class="s1">)</span><span class="s0">; </span><span class="s2">// print distance between roots</span>
+<a name="l36"><span class="ln">36   </span></a>        <span class="s1">}</span>
+<a name="l37"><span class="ln">37   </span></a>    <span class="s1">}</span>
+<a name="l38"><span class="ln">38   </span></a><span class="s1">}</span></pre>
+</body>
+</html>
